@@ -34,8 +34,11 @@ class BookingServiceTest {
 
     @BeforeEach
     void setUp() {
+        initMocks(this);
         String getHotelsByCityUrl = "http://localhost:8083/api/v1/hotel/city/##CITY##";
         String getRoomsByPaxCountAndHotelIds = "http://localhost:8084/api/v1/room/hotel/pax-count/##PAX_COUNT##/no-of-days/##NO_OF_DAYS##";
+
+        bookingService= new BookingService(getHotelsByCityUrl,getRoomsByPaxCountAndHotelIds,restTemplate);
     }
 
 
@@ -47,11 +50,11 @@ class BookingServiceTest {
 //    @Test
     void Should_Return_HotelIdList_When_CityProvided() {
         List<String> sampleHotelIds = getSampleHotelIds();
-
+        String url = "http://localhost:8083/api/v1/hotel/city/##CITY##";
         HotelListResponseWrapper sampleHotelListResponseDto = getSampleHotelListResponseDto();
-        when(bookingService.getHotelIdList(anyString())).thenReturn(any());
-        when(restTemplate.exchange(anyString(), any(HttpMethod.class), any(HttpEntity.class),
-                eq(HotelListResponseWrapper.class))).thenReturn(any());
+        when(restTemplate.exchange(url, HttpMethod.GET, null,
+                eq(HotelListResponseWrapper.class))).thenReturn(any(ResponseEntity.class));
+        when(bookingService.getHotelIdList("Kalutara")).thenReturn(sampleHotelIds);
         assertEquals(sampleHotelIds.get(0),bookingService.getHotelIdList(anyString()).get(0));
 
 
