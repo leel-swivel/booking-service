@@ -2,13 +2,10 @@ package com.hilltop.service;
 
 import com.hilltop.domain.response.HotelListResponseDto;
 import com.hilltop.domain.response.HotelResponseDto;
-import com.hilltop.domain.response.SearchRoomListResponseDto;
 import com.hilltop.wrapper.HotelListResponseWrapper;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
-import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.client.RestTemplate;
@@ -16,11 +13,7 @@ import org.springframework.web.client.RestTemplate;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.MockitoAnnotations.initMocks;
-import static org.mockito.ArgumentMatchers.anyString;
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.ArgumentMatchers.anyString;
 import static org.mockito.Mockito.*;
 import static org.mockito.MockitoAnnotations.initMocks;
@@ -38,7 +31,7 @@ class BookingServiceTest {
         String getHotelsByCityUrl = "http://localhost:8083/api/v1/hotel/city/##CITY##";
         String getRoomsByPaxCountAndHotelIds = "http://localhost:8084/api/v1/room/hotel/pax-count/##PAX_COUNT##/no-of-days/##NO_OF_DAYS##";
 
-        bookingService= new BookingService(getHotelsByCityUrl,getRoomsByPaxCountAndHotelIds,restTemplate);
+        bookingService = new BookingService(getHotelsByCityUrl, getRoomsByPaxCountAndHotelIds, restTemplate);
     }
 
 
@@ -47,7 +40,7 @@ class BookingServiceTest {
     }
 
 
-//    @Test
+    //    @Test
     void Should_Return_HotelIdList_When_CityProvided() {
         List<String> sampleHotelIds = getSampleHotelIds();
         String url = "http://localhost:8083/api/v1/hotel/city/##CITY##";
@@ -55,7 +48,7 @@ class BookingServiceTest {
         when(restTemplate.exchange(url, HttpMethod.GET, null,
                 eq(HotelListResponseWrapper.class))).thenReturn(any(ResponseEntity.class));
         when(bookingService.getHotelIdList("Kalutara")).thenReturn(sampleHotelIds);
-        assertEquals(sampleHotelIds.get(0),bookingService.getHotelIdList(anyString()).get(0));
+        assertEquals(sampleHotelIds.get(0), bookingService.getHotelIdList(anyString()).get(0));
 
 
     }
