@@ -17,10 +17,10 @@ eureka:
 
 
 hotel:
-  getHotelsByCityUrl: ${GET_HOTELS_BY_CITY_URL:http://3.239.170.14:8080/api/v1/hotel/city/##CITY##}
+  getHotelsByCityUrl: ${GET_HOTELS_BY_CITY_URL:http://54.162.89.99:8083/api/v1/hotel/city/##CITY##}
 
 room:
-  getRoomsByPaxCountAndHotelIds: ${GET_ROOMS:http://3.239.170.14:8080/api/v1/room/hotel/pax-count/##PAX_COUNT##/no-of-days/##NO_OF_DAYS##}
+  getRoomsByPaxCountAndHotelIds: ${GET_ROOMS:http://52.91.124.12:8084/api/v1/room/hotel/pax-count/##PAX_COUNT##/no-of-days/##NO_OF_DAYS##}
 
 logging:
   level:
