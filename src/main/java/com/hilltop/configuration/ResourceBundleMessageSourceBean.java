@@ -10,7 +10,7 @@ public class ResourceBundleMessageSourceBean {
     @Bean
     public ResourceBundleMessageSource messageSource() {
         var rs = new ResourceBundleMessageSource();
-        rs.setBasenames("success", "error", "email_template", "sms_template");
+        rs.setBasenames("success", "error");
         rs.setDefaultEncoding("UTF-8");
         rs.setUseCodeAsDefaultMessage(true);
         return rs;

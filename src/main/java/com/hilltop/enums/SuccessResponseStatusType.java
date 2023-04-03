@@ -7,6 +7,7 @@ import lombok.Getter;
  */
 @Getter
 public enum SuccessResponseStatusType {
+    CREATE_BOOKING(2000, "Successfully created the booking."),
     SEARCH_ROOM(2002, "Successfully returned the search room list.");
 
     private final int code;
