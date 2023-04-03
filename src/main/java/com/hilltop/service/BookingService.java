@@ -20,12 +20,17 @@ public class BookingService {
         this.bookingRepository = bookingRepository;
     }
 
+    /**
+     * This method used to save a booking detail.
+     *
+     * @param booking booking
+     */
     public void saveBooking(Booking booking) {
         try {
             bookingRepository.save(booking);
         } catch (DataAccessException e) {
             log.error("Error saving booking details due to : {}", e.getMessage());
-            throw new BookingServiceException("Error saving booking details." + e);
+            throw new BookingServiceException("Error saving booking details.", e);
         }
     }
 }

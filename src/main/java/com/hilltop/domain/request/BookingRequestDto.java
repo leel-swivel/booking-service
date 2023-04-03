@@ -8,7 +8,7 @@ import java.util.Date;
 
 @Getter
 @Setter
-public class BookingRequestDto {
+public class BookingRequestDto extends RequestDto {
 
     private Date checkInDate;
     private Date checkOutDate;
@@ -16,4 +16,8 @@ public class BookingRequestDto {
     private BigDecimal dueAmount;
 
 
+    @Override
+    public String toLogJson() {
+        return toJson();
+    }
 }

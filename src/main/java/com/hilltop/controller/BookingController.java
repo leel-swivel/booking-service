@@ -32,6 +32,12 @@ public class BookingController extends Controller {
     }
 
 
+    /**
+     * This method used to save a booking details.
+     *
+     * @param bookingRequestDto bookingRequestDto
+     * @return bookingResponseDto
+     */
     @PostMapping
     public ResponseEntity<ResponseWrapper> saveBooking(@RequestBody BookingRequestDto bookingRequestDto) {
 
@@ -39,12 +45,11 @@ public class BookingController extends Controller {
             Booking booking = new Booking(bookingRequestDto);
             bookingService.saveBooking(booking);
             var bookingResponseDto = new BookingResponseDto(booking);
+            log.info("Successfully save a booking detail for id: {}.", booking.getId());
             return getSuccessResponse(bookingResponseDto, SuccessResponseStatusType.CREATE_BOOKING, HttpStatus.CREATED);
-
         } catch (BookingServiceException e) {
             log.error("Saving booking was failed.", e);
             return getInternalServerError();
         }
-
     }
 }
