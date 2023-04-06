@@ -6,7 +6,7 @@ spring:
       matching-strategy: ant_path_matcher
 
   datasource:
-    url: ${DB_URL:jdbc:mysql://54.242.193.17:3306/booking_service?createDatabaseIfNotExist=true}
+    url: ${DB_URL:jdbc:mysql://107.23.103.40:3306/booking_service?createDatabaseIfNotExist=true}
     username: user
     password: user
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -20,10 +20,10 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://localhost:8761/eureka
+      defaultZone: http://100.26.231.196:8761/eureka
 
 logging:
   level:
     com.hilltop: ${LOG_LEVEL:DEBUG}
   file:
-    path: ${LOGPATH:/home/leel/Desktop/logs}
+    path: ${LOGPATH:/home/ubuntu/logs}
